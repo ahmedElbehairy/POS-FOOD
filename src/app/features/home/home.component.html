@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-between" style="width: 1366px !important">
+  <section class="">
+    <app-side-menu></app-side-menu>
+  </section>
+  <section class="" style="width: 700px !important">
+    <app-card [card]="dataOfCard" (id)="addProudact($event)"></app-card>
+    <!-- <mat-spinner></mat-spinner> -->
+  </section>
+  <section style="width: 400px !important">
+    <app-right-side></app-right-side>
+  </section>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="line-spin-fade"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+
+<app-snack-bar [errorMessage]="errorMessage"></app-snack-bar>

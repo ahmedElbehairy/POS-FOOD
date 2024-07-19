@@ -1,0 +1,142 @@
+<div class="icon-auth-disgin img-Background-Cover w-100 h-100">
+  <div class="container px-0">
+    <div class="d-flex justify-content-between align-items-center vh-100">
+      <section class="col-5">
+        <img
+          src="../../../../assets/Images/Auth-img.png"
+          alt="Welcome To Our POS !!"
+          class="size-Auth img-Background-Cover d-flex"
+          loading="lazy"
+        />
+      </section>
+      <div class="line h-75"></div>
+      <section class="col-5 d-flex flex-column align-items-center">
+        <!-- div for text -->
+        <div class="d-flex flex-column gap-2 mb-5 w-100">
+          <p class="m-0 font-Regular-s22 text-secondary">
+            {{ objectOfPage.nameOfPage }}
+          </p>
+          <p class="m-0 font-Bold-s44 text-black">
+            {{ objectOfPage.titleOfPage }}
+          </p>
+        </div>
+        <p
+          *ngIf="objectOfPage.text3"
+          class="m-0 mb-4 font-SemiBold-s20 text-black"
+        >
+          {{ objectOfPage.text3 }}
+        </p>
+        <!-- form for input -->
+        <form
+          class="w-100"
+          #submit="ngForm"
+          (ngSubmit)="SendData(submit.value)"
+        >
+          <div
+            class="mt-5 gap-4 d-flex align-items-center border-b-gray-s1 py-3"
+            *ngFor="let input of inputOfPage"
+          >
+            <i class="{{ input.icon }} iC-S20 img-Background-Cover d-flex"></i>
+            <input
+              class="w-100 border-0"
+              [type]="input.type"
+              [placeholder]="input.p_h"
+              [id]="input.id"
+              [name]="input.name"
+              [(ngModel)]="input.ngModul"
+              #input.name="ngModel"
+            />
+          </div>
+          <p
+            *ngIf="objectOfPage.text"
+            [routerLink]="objectOfPage.routing1"
+            class="m-0 mt-4 cursor-click text-end font-SemiBold-s20 text-main"
+          >
+            {{ objectOfPage.text }}
+          </p>
+          <p
+            *ngIf="objectOfPage.text2"
+            class="m-0 mt-4 font-SemiBold-s20 text-black"
+          >
+            {{ objectOfPage.text2.split(".")[0] }}
+            <span class="text-main">{{
+              objectOfPage.text2.split(".")[1]
+            }}</span>
+            {{ objectOfPage.text2.split(".")[2] }}
+            <span class="text-main">{{
+              objectOfPage.text2.split(".")[3]
+            }}</span>
+          </p>
+          <button [routerLink]="objectOfPage.routing2"
+            type="submit"
+            class="mt-5 bg-support1 border-0 py-3 font-SemiBold-s20 border-F-radius-s8 text-white w-100"
+          >
+            <span *ngIf="!buttonStatus">
+              <div class="spinner-border text-white" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </span>
+            <span *ngIf="buttonStatus">
+              {{ objectOfPage.buttonOfPage }}
+            </span>
+          </button>
+          <button
+            *ngIf="objectOfPage.buttonOfPage1"
+            type="submit"
+            class="mt-5 bg-main border-0 py-3 font-SemiBold-s20 border-F-radius-s8 text-white w-100"
+          >
+            <span *ngIf="!buttonStatus">
+              <div class="spinner-border text-white" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </span>
+            <span *ngIf="buttonStatus">
+              {{ objectOfPage.buttonOfPage1 }}
+            </span>
+          </button>
+        </form>
+        <p
+          *ngIf="
+            !_router.url.includes('SignUp') &&
+            !_router.url.includes('Passwordchanged')
+          "
+          class="m-0 mt-5 w-75 d-flex align-items-center justify-content-between"
+        >
+          <span class="line_or"></span>
+          Or
+          <span class="line_or"></span>
+        </p>
+        <div
+          class="d-flex mt-5 w-75 gap-4"
+          *ngIf="
+            !_router.url.includes('SignUp') &&
+            !_router.url.includes('Passwordchanged')
+          "
+        >
+          <button
+            class="d-flex justify-content-center align-items-center border-F-radius-s8 border-gray-s2 gap-2 font-SemiBold-s18 py-3 w-50 bg-white"
+          >
+            <i class="img-Background-Cover d-flex icon-google iC-S30"></i>
+            Google
+          </button>
+          <button
+            class="d-flex justify-content-center align-items-center border-F-radius-s8 border-gray-s2 gap-2 font-SemiBold-s18 py-3 w-50 bg-white"
+          >
+            <i class="img-Background-Cover d-flex icon-facebook iC-S30"></i>
+            Facebook
+          </button>
+        </div>
+        <p
+          *ngIf="objectOfPage.text1"
+          class="mt-5 font-Medium-s20"
+          [routerLink]="objectOfPage.routing"
+        >
+          {{ objectOfPage.text1.split("?")[0] }} ?
+          <span class="text-main cursor-click">{{
+            objectOfPage.text1.split("?")[1]
+          }}</span>
+        </p>
+      </section>
+    </div>
+  </div>
+</div>

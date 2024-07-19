@@ -1,0 +1,7 @@
+<div *ngIf="errorMessage || successMessage"
+  class="p-4 border-F-radius-s50 d-flex align-items-center position-absolute gap-3 P-snack"
+  [ngClass]="errorMessage ? 'bg-red' : 'bg-green'"
+>
+  <div class="" [ngClass]="errorMessage ? 'error-line' : 'success-line'"></div>
+  <p [innerHtml]="errorMessage || successMessage"></p>
+</div>

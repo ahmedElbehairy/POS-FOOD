@@ -1,0 +1,37 @@
+<div
+  *ngIf="card !== undefined"
+  class="d-flex justify-content-center flex-wrap gap-3 mx-3 px-3"
+>
+  <div
+    *ngFor="let item of card; index as i"
+    class="my-4"
+    style="width: 195px !important"
+    [id]="item?.id"
+  >
+    <div class="hover-add-PR size-card position-relative">
+      <img
+        class="size-card img-Background-Cover border-F-radius-s8"
+        [src]="item?.img"
+        [alt]="item?.name"
+        loading="lazy"
+      />
+      <div
+        class="hover-add-pr d-none justify-content-center align-items-center"
+        (click)="sendId(item.id)"
+      >
+        <i class="icon-add iC-S50 img-Background-Cover d-flex"></i>
+      </div>
+    </div>
+    <div class="d-flex flex-column mt-2 gap-2">
+      <div class="d-flex">
+        <span
+          *ngFor="let star of stars; index as i"
+          [ngClass]="i < item.rate ? 'star-gold' : 'star'"
+          class="fa fa-star checked"
+        ></span>
+      </div>
+      <p class="m-0 text-break font-SemiBold-s20">{{ item?.name | titlecase }}</p>
+      <p class="m-0 font-Bold-s18">{{ item?.price | currency }}</p>
+    </div>
+  </div>
+</div>

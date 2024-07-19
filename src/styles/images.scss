@@ -1,0 +1,50 @@
+.img-logo {
+  background-image: url(../assets/Images/logo.png);
+}
+.img-Logo-name {
+  background-image: url(../assets/Images/Logo-name.png);
+}
+.img-Auth {
+  background-image: url(../assets/Images/Auth-img.png);
+}
+
+
+// START === Background Holder
+.img-Background-Cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-Background-none {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: none;
+}
+
+.img-Background-Contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+// END === Background Holder
+
+.size-logo {
+  width: 93px;
+  height: 86px;
+}
+
+.size-Auth {
+  width: 483px;
+  height: 479px;
+}
+
+.size-logo-name {
+  width: 157px;
+  height: 48px;
+}
+
+.size-card {
+  width: 195px;
+  height: 195px;
+}

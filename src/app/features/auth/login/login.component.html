@@ -1,0 +1,11 @@
+<app-auth-page
+  [objectOfPage]="objectOfPage"
+  [inputOfPage]="inputs"
+  (ValueOfForm)="Login($event)"
+  [buttonStatus]="buttonStatus"
+></app-auth-page>
+
+<app-snack-bar
+  [errorMessage]="errorMessage"
+  [successMessage]="successMessage"
+></app-snack-bar>

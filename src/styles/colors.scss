@@ -1,0 +1,161 @@
+$main: #f67f20;
+$secondary: #787878;
+$support1: #003048;
+$support2: #273043;
+$white: #fff;
+$light-black: #495057;
+$gray: #e9ecef;
+$Gray85: #d9d9d9;
+$cyan-blue: #adb5bd;
+$Gray6B: #5c5e6b;
+$red: #aa0000;
+$green: #009600;
+
+// START === Background Color
+.bg-Inherit {
+  background-color: inherit;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-main {
+  background-color: $main !important;
+}
+
+.bg-secondary {
+  background-color: $secondary !important;
+}
+
+.bg-support1 {
+  background-color: $support1 !important;
+}
+
+.bg-support2 {
+  background-color: $support2 !important;
+}
+
+.bg-white {
+  background-color: $white !important;
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.bg-Gray85 {
+  background-color: $Gray85;
+}
+.bg-cyan-blue {
+  background-color: $cyan-blue !important;
+}
+.bg-red {
+  background-color: $red !important;
+}
+.bg-green {
+  background-color: $green !important;
+}
+
+// END === Background Color
+
+// START === Text Color
+.text-main {
+  color: $main !important;
+}
+
+.text-secondary {
+  color: $secondary !important;
+}
+
+.text-support1 {
+  color: $support1 !important;
+}
+
+.text-support2 {
+  color: $support2 !important;
+}
+
+.text-white {
+  color: $white !important;
+}
+
+.text-light-black {
+  color: $light-black !important;
+}
+
+.text-cyan-blue {
+  color: $cyan-blue !important;
+}
+
+.text-Gray6B {
+  color: $Gray6B !important;
+}
+
+.text-red {
+  color: $red !important;
+}
+
+// END === Text Color
+// START === Text Color opacity
+.text-main-opacity-20 {
+  color: rgba($color: $main, $alpha: 0.2) !important;
+}
+
+.text-main-opacity-50 {
+  color: rgba($color: $main, $alpha: 0.5) !important;
+}
+
+.text-main-opacity-70 {
+  color: rgba($color: $main, $alpha: 0.7) !important;
+}
+
+.text-main-opacity-75 {
+  color: rgba($color: $main, $alpha: 0.75) !important;
+}
+
+.text-main-opacity-80 {
+  color: rgba($color: $main, $alpha: 0.8) !important;
+}
+
+.text-support2-opacity-50 {
+  color: rgba($color: $support2, $alpha: 0.5) !important;
+}
+
+.text-white-opacity-40 {
+  color: rgba($color: $white, $alpha: 0.4);
+}
+
+// END === Text Color opacity
+
+// START === Background Color opacity
+.bg-main-opacity-02 {
+  background-color: rgba($color: $main, $alpha: 0.02) !important;
+}
+
+.bg-main-opacity-03 {
+  background-color: rgba($color: $main, $alpha: 0.03) !important;
+}
+
+.bg-main-opacity-05 {
+  background-color: rgba($color: $main, $alpha: 0.05) !important;
+}
+
+.bg-main-opacity-10 {
+  background-color: rgba($color: $main, $alpha: 0.1);
+}
+.bg-main-opacity-05 {
+  background-color: rgba($color: $main, $alpha: 0.05) !important;
+}
+
+.bg-main-opacity-15 {
+  background-color: rgba($color: $main, $alpha: 0.15) !important;
+}
+
+.bg-main-opacity-20 {
+  background-color: rgba($color: $main, $alpha: 0.2);
+}
+
+.bg-light-black-05 {
+  background-color: rgba($color: $light-black, $alpha: 0.5);
+}

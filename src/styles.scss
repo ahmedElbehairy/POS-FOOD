@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+input:focus-visible ,
+textarea:focus-visible {
+    outline: unset !important;
+    outline-offset: unset !important;
+}
