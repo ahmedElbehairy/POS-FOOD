@@ -1,5 +1,6 @@
 <app-auth-page
   [objectOfPage]="objectOfPage"
+  (photo)="getPhoto($event)"
   [inputOfPage]="inputs"
   (ValueOfForm)="Registration($event)"
   [buttonStatus]="buttonStatus"

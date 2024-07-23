@@ -32,6 +32,10 @@ export class AuthService {
     return this.FS.confirmPasswordReset(this.code , ResetPasswordValue.password)
   }
 
+  // deleteAcc(): Promise<void>  {
+  //   return this.FS.currentUser 
+  // }
+
   loginWithGoogle(){
     // this.FS.signInWithPopup(new )
   }

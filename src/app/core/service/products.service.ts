@@ -14,4 +14,8 @@ export class ProductsService {
    getProducts(){
      return this.FS.collection('products').valueChanges()
   }
+   getOneProducts(id:string){
+    console.log(id);
+     return this.FS.collection('products').doc(id).valueChanges()
+  }
 }

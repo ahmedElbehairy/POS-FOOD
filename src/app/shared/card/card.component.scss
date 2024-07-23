@@ -1,29 +1,32 @@
-
-.star{
-    margin: 0px 0px;
-    color: #a9a5a5;
-    display: inline-block;
+ngb-rating {
+  color: #003048;
+}
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  color: #e3e3e3;
+}
+.full {
+  color: #003048;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #003048;
+}
+.hover-add-PR:hover {
+  .hover-add-pr {
     cursor: pointer;
+    border-radius: 8px;
+    display: flex !important;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
   }
-  .star .mat-icon{
-      width: 40px;
-      height: 40px;
-  }
-  .star-gold{
-    display: inline-block;
-    color: #003048;
-  }
-  .hover-add-PR:hover{
-    .hover-add-pr{
-      cursor: pointer;
-      border-radius: 8px;
-      display: flex !important;
-      background-color: rgba(0, 0, 0, 0.4) ;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      top: 0;
-      left: 0;
-    }
-  }
+}

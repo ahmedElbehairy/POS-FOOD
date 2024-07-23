@@ -5,6 +5,9 @@ export interface input {
   id: string;
   ngModul: string;
   icon: string;
+  req:boolean;
+  pattern:string
+  errorPattern:string
 }
 export interface layOutOfPage {
   nameOfPage: string;
@@ -21,8 +24,18 @@ export interface layOutOfPage {
 }
 
 export interface Forms {
-  username: string;
-  password?: string;
+  email: string;
+  name:string
+  img?:string
+  password: string;
   Confirm_Password?: string;
   New_Password?: string;
+}
+
+export interface NewUser {
+  name:string
+  id:string;
+  password:string;
+  email:string;
+  img?:string
 }

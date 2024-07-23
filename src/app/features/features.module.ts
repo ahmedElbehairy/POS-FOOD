@@ -20,7 +20,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     AuthModule,
     FeaturesRoutingModule,
-    CommonModule
-  ]
+    CommonModule,
+]
 })
 export class FeaturesModule { }

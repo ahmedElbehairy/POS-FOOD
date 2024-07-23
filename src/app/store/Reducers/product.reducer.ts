@@ -8,12 +8,13 @@ import {
 
 
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   price: string;
   category: string;
   img: string;
   rate: number;
+  ingredients:string
 }
 const initialState: Product[] = [];
 

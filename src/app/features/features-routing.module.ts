@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundPageComponent } from '../shared/not-found-page/not-found-page.component';
+import { AuthGuard } from '../core/hellper/guards/auth.guard';
 
 const routes: Routes = [
     { path: '', redirectTo: '/Login', pathMatch: 'full'},
@@ -10,14 +11,14 @@ const routes: Routes = [
     import("./auth/auth.module").then(
         (m: any) => m.AuthModule
     )},
-    { path: 'Home',component:HomeComponent},
-    { path: 'Customers',component:HomeComponent},
-    { path: 'Dashboard',component:HomeComponent},
-    { path: 'Messages',component:HomeComponent},
-    { path: 'Notification',component:HomeComponent},
-    { path: 'Order',component:HomeComponent},
-    { path: 'Product',component:HomeComponent},
-    { path: 'Setting',component:HomeComponent},
+    { path: 'Home',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Customers',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Dashboard',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Messages',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Notification',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Order',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Product',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: 'Setting',component:HomeComponent, canActivate: [AuthGuard]},
     { path: '**', component:NotFoundPageComponent},
 ];
 

@@ -1,0 +1,38 @@
+<div class="modal-dialog">
+  <div class="modal-content" *ngIf="isLoding">
+    <div class="modal-header">
+        <p class="m-0 font-Bold-s20 text-main">{{product.name}}</p>
+      <!-- <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button> -->
+    </div>
+    <div class="modal-body">
+        <div class="d-flex justify-content-center">
+            <img [src]="product.img" [alt]="product.name" 
+            class="img-Background-Cover img-S150 rounded-circle">
+        </div>
+        <div class="mt-3">
+            <p class="m-0 font-SemiBold-s18 text-support2">{{product.ingredients}}</p>
+        </div>
+        <div class="mt-3">
+            <p class="m-0 d-flex align-items-center gap-1">
+                <i class="d-flex img-Background-Cover IC-minus iC-S30 cursor-click" (click)="addPro('minus' , -1)"></i>
+                <span class="font-Bold-s18 border-0 text-support2">{{amount}}</span>
+                <i class="d-flex img-Background-Cover IC-add-Pro iC-S30 cursor-click" (click)="addPro('add' , +1)"></i>
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn bg-main text-white" data-bs-dismiss="modal">
+            Close
+        </button>
+        <button type="button" class="btn bg-support1 text-white d-flex align-items-center gap-2">
+            add Order
+            <i class="d-flex img-Background-Cover IC-card iC-S20"></i>
+        </button>
+    </div>
+  </div>
+</div>

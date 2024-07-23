@@ -28,14 +28,24 @@
         </p>
         <!-- form for input -->
         <form
-          class="w-100"
+          class="w-100 position-relative"
           #submit="ngForm"
           (ngSubmit)="SendData(submit.value)"
         >
+                <!-- label click for input change photo -->
+        <label *ngIf="_router.url.includes('SignUp')" for="change-photo" class="flex-column position-absolute 
+        cursor-click border-f-main-dash-s2 img-S166 rounded-circle d-flex justify-content-center align-items-center img-Background-Cover"
+        style='background-image: url({{downloadURL}})'>
+        <i *ngIf="!downloadURL" class="IC-add-company-img d-flerx img-Background-Cover iC-S20"></i>
+        <span *ngIf="!downloadURL">اضافة الصورة</span>
+        </label>
+        <!-- input change photo -->
+        <input (change)="sendPhoto($event)" type="file"  #img="ngModel" ngModel class="d-none" name="img" id="change-photo">
           <div
-            class="mt-5 gap-4 d-flex align-items-center border-b-gray-s1 py-3"
+            class="mt-5"
             *ngFor="let input of inputOfPage"
           >
+          <div class="gap-4 d-flex align-items-center border-b-gray-s1 py-3">
             <i class="{{ input.icon }} iC-S20 img-Background-Cover d-flex"></i>
             <input
               class="w-100 border-0"
@@ -44,8 +54,14 @@
               [id]="input.id"
               [name]="input.name"
               [(ngModel)]="input.ngModul"
-              #input.name="ngModel"
+              #inputs="ngModel"
+              [required]="input.req"
+              [pattern]="input.pattern"
             />
+          </div>
+            <div *ngIf="inputs?.errors && (inputs?.dirty || inputs?.touched)">
+              <p *ngIf="inputs?.errors?.['pattern']" class="m-0 mt-3 CC-alert"> {{input.errorPattern}}</p>
+            </div>
           </div>
           <p
             *ngIf="objectOfPage.text"
@@ -69,6 +85,7 @@
           </p>
           <button [routerLink]="objectOfPage.routing2"
             type="submit"
+            [disabled]="submit.invalid"
             class="mt-5 bg-support1 border-0 py-3 font-SemiBold-s20 border-F-radius-s8 text-white w-100"
           >
             <span *ngIf="!buttonStatus">
@@ -83,7 +100,9 @@
           <button
             *ngIf="objectOfPage.buttonOfPage1"
             type="submit"
+            [disabled]="submit.invalid"
             class="mt-5 bg-main border-0 py-3 font-SemiBold-s20 border-F-radius-s8 text-white w-100"
+            
           >
             <span *ngIf="!buttonStatus">
               <div class="spinner-border text-white" role="status">
@@ -113,13 +132,13 @@
             !_router.url.includes('Passwordchanged')
           "
         >
-          <button
+          <button (click)="loginWithGoogle()"
             class="d-flex justify-content-center align-items-center border-F-radius-s8 border-gray-s2 gap-2 font-SemiBold-s18 py-3 w-50 bg-white"
           >
             <i class="img-Background-Cover d-flex icon-google iC-S30"></i>
             Google
           </button>
-          <button
+          <button (click)="loginWithFacebook()"
             class="d-flex justify-content-center align-items-center border-F-radius-s8 border-gray-s2 gap-2 font-SemiBold-s18 py-3 w-50 bg-white"
           >
             <i class="img-Background-Cover d-flex icon-facebook iC-S30"></i>
@@ -140,3 +159,12 @@
     </div>
   </div>
 </div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="line-spin-fade"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>

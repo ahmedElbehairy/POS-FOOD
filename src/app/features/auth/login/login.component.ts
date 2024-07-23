@@ -24,12 +24,15 @@ export class LoginComponent {
   };
   inputs: input[] = [
     {
-      name: 'username',
+      name: 'email',
       id: 'email_id',
       p_h: 'Email Address',
       ngModul: '',
       type: 'email',
       icon: 'icon-email',
+      req: true,
+      pattern:'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$',
+      errorPattern: 'Invalid email address',
     },
     {
       name: 'password',
@@ -38,15 +41,41 @@ export class LoginComponent {
       ngModul: '',
       type: 'password',
       icon: 'icon-passwword',
+      req: true,
+      pattern:'',
+      errorPattern: '',
     },
   ];
-  constructor(private _Auth: AuthService , private _router:Router) {}
-  
+  constructor(private _Auth: AuthService, private _router: Router) {}
+
   Login(event: Forms) {
     this.buttonStatus = false;
     this._Auth
-      .login({ username: 'mor_2314', password: '83r5^_' })
-      .pipe(
+      .login(event)
+      .then((data) => {
+        localStorage.setItem('user', JSON.stringify(data.user?.uid));
+        this.successMessage = `<p class="m-0 d-flex flex-column">
+          <span class="text-main font-Bold-s20"> Welcome ! </span> 
+          <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+            MR: ${data.user?.displayName}
+          </span>
+          </p>
+        `;
+        setTimeout(() => {
+          this._router.navigate(['/Home'])
+        }, 1500);
+      })
+      .catch((err) => {
+        if (err) {
+          this.errorMessage = `<p class="m-0 d-flex flex-column">
+            <span class="text-main font-Bold-s20"> Oops ! </span> 
+            <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+            Look like Email Or Password Incorrect
+            </span>
+            </p>`;
+        }
+      });
+    /*     pipe(
         catchError((error) => {
           if (error.status === 401) {
             this.errorMessage = `<p class="m-0 d-flex flex-column">
@@ -89,6 +118,7 @@ export class LoginComponent {
           }, 1500);
         }
       });
+      */
     setTimeout(() => {
       this.errorMessage = '';
       this.successMessage = '';

@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-input:focus-visible ,
+input:focus-visible,
 textarea:focus-visible {
-    outline: unset !important;
-    outline-offset: unset !important;
+  outline: unset !important;
+  outline-offset: unset !important;
+}
+.CC-alert {
+  color: red;
+  font-size: 14px !important;
+  font-family: Cairo-Regular;
 }

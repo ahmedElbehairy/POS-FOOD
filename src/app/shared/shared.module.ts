@@ -7,6 +7,9 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { RightSideComponent } from './right-side/right-side.component';
 import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AddProComponent } from './add-pro/add-pro.component';
+import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,11 +18,15 @@ import { RouterModule } from '@angular/router';
     SideMenuComponent,
     RightSideComponent,
     CardComponent,
+    AddProComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    NgbModule,
+    NgbRatingModule,
     RouterModule,
+    NgxSpinnerModule,
     ReactiveFormsModule,
   ],
   exports: [
@@ -28,6 +35,7 @@ import { RouterModule } from '@angular/router';
     SideMenuComponent,
     RightSideComponent,
     CardComponent,
+    AddProComponent,
   ],
 })
 export class SharedModule {}
