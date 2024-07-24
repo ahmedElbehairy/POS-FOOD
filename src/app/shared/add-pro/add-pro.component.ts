@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SendPro } from 'src/app/core/model/product';
 import { ProductsService } from 'src/app/core/service/products.service';
 import { Product } from 'src/app/store/Reducers/product.reducer';
+declare var $: any;
 
 @Component({
   selector: 'app-add-pro',
@@ -9,28 +11,43 @@ import { Product } from 'src/app/store/Reducers/product.reducer';
 })
 export class AddProComponent {
   @Input() idOfPro!: string;
+  @Output() prod = new EventEmitter<SendPro>
   product!: Product;
   isLoding: boolean = false;
-  amount:number = 0
+  amount:number = 1
+  TotlePrice:number = 0
   constructor(private _onePro: ProductsService) {}
 
   ngOnInit() {}
 
   getOnePro() {
     this._onePro.getOneProducts(this.idOfPro).subscribe((res:any) => {
-      console.log(res);
       this.product = res
+      this.TotlePrice = this.product.price
       this.isLoding = true
+    },err => {
+      console.log(err);
     });
   }
   addPro(id:string , amount:number){
-    console.log(id , amount);
-    
+    if(id == 'add' && this.amount >= 0 ){
+      this.amount = this.amount + amount 
+      this.TotlePrice =  this.amount*this.product.price
+    }else if (id == 'minus' && this.amount > 1 ){
+      this.amount = this.amount - amount
+      this.TotlePrice =  this.amount*this.product.price
+    }
   }
   ngOnChanges(changes: any) {
-    console.log(changes);
     if(!changes['idOfPro'].firstChange && changes['idOfPro'].currentValue !== undefined){
       this.getOnePro()
     }
+  }
+  sendPro(item:Product){
+    const pro:SendPro = {
+      name:item.name , totalPrice:this.TotlePrice ,img:item.img , amount:this.amount , price:item.price 
+    }
+    this.prod.emit(pro)
+    $('#add_Pro').modal('hide');
   }
 }

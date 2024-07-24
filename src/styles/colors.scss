@@ -5,8 +5,8 @@ $support2: #273043;
 $white: #fff;
 $light-black: #495057;
 $gray: #F5F5F5;
-$Gray85: #d9d9d9;
-$cyan-blue: #adb5bd;
+$Gray85: #777777;
+$cyan-blue: #E5E5E5;
 $Gray6B: #5c5e6b;
 $red: #aa0000;
 $green: #009600;
@@ -90,6 +90,10 @@ $green: #009600;
 
 .text-gray{
   color: $gray !important;
+}
+
+.text-Gray85{
+  color: $Gray85 !important;
 }
 
 .text-red {

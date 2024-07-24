@@ -7,14 +7,19 @@ import { HomeComponent } from './home/home.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreatOrderComponent } from './creat-order/creat-order.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CreatOrderComponent,
   ],
   imports: [
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxSpinnerModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,

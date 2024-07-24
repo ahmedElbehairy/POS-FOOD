@@ -10,7 +10,7 @@ import {
 export interface Product {
   id: string;
   name: string;
-  price: string;
+  price: number;
   category: string;
   img: string;
   rate: number;

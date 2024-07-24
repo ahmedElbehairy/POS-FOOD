@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AddProComponent } from './add-pro/add-pro.component';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { PrintOrderComponent } from './print-order/print-order.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     RightSideComponent,
     CardComponent,
     AddProComponent,
+    PrintOrderComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     RightSideComponent,
     CardComponent,
     AddProComponent,
+    PrintOrderComponent,
   ],
 })
 export class SharedModule {}

@@ -17,6 +17,9 @@ export class UsersService {
     })
   }
   deleteNewUser(id:string){
-    return this.FS.collection(`users/`).doc(id).delete()
+    return this.FS.collection('users').doc(id).delete()
+  }
+  getOneUser(id:string){
+    return this.FS.collection('users').doc(id).valueChanges()
   }
 }

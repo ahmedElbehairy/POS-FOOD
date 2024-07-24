@@ -1,0 +1,62 @@
+<div class="modal-dialog">
+    <div class="modal-content IC-print-icon" *ngIf="isLoding">
+      <div class="modal-header">
+          <p class="m-0 w-100 font-Bold-s22 text-center text-main">
+            Order #{{order.idOfOrder}}
+          </p>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column gap-2 py-4" >
+            <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
+                <span>Recipent Name :</span>
+                <span></span>
+            </p>
+            <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
+                <span>Customer ID</span>
+                <span></span>
+            </p>
+            <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
+                <span>Recipent</span>
+                <span>{{date | date}}</span>
+            </p>
+        </div>
+        <div class="d-flex flex-column gap-2 py-4 border-B-T-gray-s1" >
+            <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18" *ngFor="let item of order.itemOrder ; index as i ">
+                <span>{{i+1}}) {{item.name}}</span>
+                <span>{{item.amount}}</span>
+                <span>{{item.price | currency}}</span>
+            </p>
+        </div>
+        <div class="d-flex flex-column gap-2 py-4">
+            <p class="m-0 font-SemiBold-s20  justify-content-between d-flex align-items-center">
+                <span class="">Subtotal</span>
+                <span class="">{{order.totalPrice| currency}}</span>
+            </p>
+            <p class="m-0 font-SemiBold-s18 text-Gray85 justify-content-between d-flex align-items-center">
+                <span class="">Tax 14%</span>
+                <span class="">{{order.totalPrice/100*14 | currency}}</span>
+            </p>
+            <p class="m-0 font-SemiBold-s18 text-Gray85 justify-content-between d-flex align-items-center">
+                <span class="">Discount 10%</span>
+                <span class="">{{order.totalPrice/100*10 | currency}}</span>
+            </p>
+            <p class="m-0 py-3 border-T-gray-dash-s2 font-SemiBold-s20 justify-content-between d-flex align-items-center">
+                <span class="">Total</span>
+                <span class="">{{
+                    order.totalPrice/10 + order.totalPrice/14 + order.totalPrice 
+                    | currency
+                    }}</span>
+            </p>
+            <button
+              type="button"
+              class="btn mt-5 bg-support1 py-3 text-white justify-content-center d-flex align-items-center gap-2"
+              (click)="PrintOrder()"
+            >
+            Print Order
+              <i class="d-flex img-Background-Cover IC-print iC-S20"></i>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,36 +1,38 @@
 <div class="modal-dialog">
   <div class="modal-content" *ngIf="isLoding">
     <div class="modal-header">
-        <p class="m-0 font-Bold-s20 text-main">{{product.name}}</p>
-      <!-- <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      ></button> -->
+        <p class="m-0 w-100 font-Bold-s40 text-center text-main">{{product.name}}</p>
     </div>
     <div class="modal-body">
         <div class="d-flex justify-content-center">
             <img [src]="product.img" [alt]="product.name" 
+            loading="lazy"
             class="img-Background-Cover img-S150 rounded-circle">
         </div>
         <div class="mt-3">
             <p class="m-0 font-SemiBold-s18 text-support2">{{product.ingredients}}</p>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 d-flex align-items-center justify-content-between">
             <p class="m-0 d-flex align-items-center gap-1">
-                <i class="d-flex img-Background-Cover IC-minus iC-S30 cursor-click" (click)="addPro('minus' , -1)"></i>
+                <i class="d-flex img-Background-Cover IC-minus iC-S30 cursor-click" (click)="addPro('minus' , 1)"></i>
                 <span class="font-Bold-s18 border-0 text-support2">{{amount}}</span>
-                <i class="d-flex img-Background-Cover IC-add-Pro iC-S30 cursor-click" (click)="addPro('add' , +1)"></i>
+                <i class="d-flex img-Background-Cover IC-add-Pro iC-S30 cursor-click" (click)="addPro('add' , 1)"></i>
+            </p>
+            <p class="m-0 text-main">
+                {{product.price | currency}}
+            </p>
+            <p class="m-0 text-main">
+                {{TotlePrice | currency}}
             </p>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn bg-main text-white" data-bs-dismiss="modal">
+        <button type="button" class="btn bg-main text-white" data-bs-dismiss="modal" (click)="amount = 1">
             Close
         </button>
-        <button type="button" class="btn bg-support1 text-white d-flex align-items-center gap-2">
-            add Order
+        <button type="button" class="btn bg-support1 text-white d-flex align-items-center gap-2"
+        (click)="sendPro(product) ; amount = 1">
+            add to Cart
             <i class="d-flex img-Background-Cover IC-card iC-S20"></i>
         </button>
     </div>

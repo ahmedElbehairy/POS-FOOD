@@ -1,8 +1,106 @@
-<div class=" d-flex flex-column border-l-gray-s1 vh-100">
-    <div class="border-b-gray-s1 d-flex align-items-center justify-content-center p-5 pb-4">
-    
+<div class="d-flex flex-column border-l-gray-s1 vh-100">
+  <div
+    class="border-b-gray-s1 d-flex align-items-center justify-content-between p-4 pb-4 w-100~"
+    *ngIf="user"
+  >
+    <div class="d-flex gap-3 align-items-center">
+      <img
+        class="img-Background-Cover img-S65 rounded-circle"
+        loading="lazy"
+        [src]="user.img"
+        alt="photo OF {{ user.name }}"
+      />
+      <p class="m-0 d-flex flex-column gap-1~">
+        <span class="font-SemiBold-s22 text-black">{{
+          user.name | titlecase
+        }}</span>
+        <span class="text-Gray85 font-Medium-s18">{{
+          user.name == "El_Behairy" ? "Admain" : "Cashier"
+        }}</span>
+      </p>
     </div>
-    <div class="h-100 py-4 d-flex flex-column justify-content-between">
-        
+    <i class="d-flex IC-Call-Icon img-Background-Cover iC-S45 cursor-click"></i>
+  </div>
+  <div
+    class="h-100 p-4 d-flex flex-column justify-content-between"
+    *ngIf="order.orders.length !== 0"
+  >
+    <div>
+      <p class="m-0 font-Bold-s22 text-black mb-4">Order # {{ order.id }}</p>
+      <div
+        *ngFor="let order of order.orders; index as i"
+        class="border-F-radius-s8 bg-white border-gray-s2 p-2 d-flex justify-content-between align-items-center mb-3"
+      >
+        <div class="d-flex gap-3 align-items-center">
+          <img
+            class="img-Background-Cover img-S80 border-F-radius-s8"
+            loading="lazy"
+            [src]="order.img"
+            [alt]="order.name"
+          />
+          <p class="m-0 d-flex flex-column gap-1~">
+            <span class="font-SemiBold-s18 text-black">{{
+              order.name | titlecase
+            }}</span>
+            <span class="text-main font-Bold-s16">{{
+              order.totalPrice | currency
+            }}</span>
+          </p>
+        </div>
+        <div>
+          <p class="m-0 d-flex align-items-center gap-1">
+            <i
+              class="d-flex img-Background-Cover IC-minus iC-S30 cursor-click"
+              (click)="addPro('minus', 1, i)"
+            ></i>
+            <span class="font-Bold-s18 border-0 text-support2">{{
+              order.amount
+            }}</span>
+            <i
+              class="d-flex img-Background-Cover IC-add-Pro iC-S30 cursor-click"
+              (click)="addPro('add', 1, i)"
+            ></i>
+          </p>
+        </div>
+      </div>
     </div>
+    <div class="d-flex flex-column gap-3">
+        <p class="m-0 font-SemiBold-s20  justify-content-between d-flex align-items-center">
+            <span class="">Subtotal</span>
+            <span class="">{{order.TotalPriceOfOrder | currency}}</span>
+        </p>
+        <p class="m-0 font-SemiBold-s18 text-Gray85 justify-content-between d-flex align-items-center">
+            <span class="">Tax 14%</span>
+            <span class="">{{order.TotalPriceOfOrder/100*14 | currency}}</span>
+        </p>
+        <p class="m-0 font-SemiBold-s18 text-Gray85 justify-content-between d-flex align-items-center">
+            <span class="">Discount 10%</span>
+            <span class="">{{order.TotalPriceOfOrder/100*10 | currency}}</span>
+        </p>
+        <p class="m-0 py-3 border-T-gray-dash-s2 font-SemiBold-s20 justify-content-between d-flex align-items-center">
+            <span class="">Total</span>
+            <span class="">{{
+                order.TotalPriceOfOrder/10 + order.TotalPriceOfOrder/14 + order.TotalPriceOfOrder 
+                | currency
+                }}</span>
+        </p>
+        <button
+          type="button"
+          class="btn mt-5 bg-support1 py-3 text-white justify-content-center d-flex align-items-center gap-2"
+          (click)="makeOrder()"
+        >
+          Place Order
+          <!-- <i class="d-flex img-Background-Cover IC-card iC-S20"></i> -->
+        </button>
+    </div>
+  </div>
 </div>
+
+<app-print-order 
+  [order]="MakeOrder"
+  class="modal fade"
+  id="make_order"
+  tabindex="-1"
+  aria-labelledby="addProLabel"
+  aria-hidden="true"
+></app-print-order>

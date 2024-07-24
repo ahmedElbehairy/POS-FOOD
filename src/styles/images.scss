@@ -19,7 +19,7 @@
 .img-Background-none {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: none;
+  background-size: unset;
 }
 
 .img-Background-Contain {
@@ -29,6 +29,14 @@
 }
 // END === Background Holder
 
+.img-S65 {
+  width: 65px;
+  height: 65px;
+}
+.img-S80 {
+  width: 80px;
+  height: 80px;
+}
 .img-S150 {
   width: 150px;
   height: 150px;

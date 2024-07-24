@@ -1,0 +1,9 @@
+<div class="p-5">
+    <p class="m-0 text-black mb-5 font-SemiBold-s30">Order #20235</p>
+    <form #Customer="ngForm" class="d-flex gap-5 w-100" (ngSubmit)="ngSubmit(Customer.value)">
+        <div class="d-flex flex-column gap-2 WInput" *ngFor="let input of inputForm">
+            <label [for]="input.id">{{input.label}}</label>
+            <input type="text" [id]="input.id" >
+        </div>
+    </form>
+</div>
