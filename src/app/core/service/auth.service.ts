@@ -10,41 +10,50 @@ import firebase from 'firebase/compat/app';
 })
 export class AuthService {
   User: Observable<firebase.User | null>;
-  code!:any
-  constructor(private _http: HttpClient , private FS:AngularFireAuth) {
-    this.User = of(null)
-    this.User = FS.user
+  code!: any;
+  constructor(private _http: HttpClient, private FS: AngularFireAuth) {
+    this.User = of(null);
+    this.User = FS.user; 
   }
 
   login(loginValue: Forms) {
-    return this.FS.signInWithEmailAndPassword(loginValue.email ,loginValue.password)
+    return this.FS.signInWithEmailAndPassword(
+      loginValue.email,
+      loginValue.password
+    );
   }
   Registration(RegistrationValue: Forms) {
-    return this.FS.createUserWithEmailAndPassword(RegistrationValue.email , RegistrationValue.password )
+    return this.FS.createUserWithEmailAndPassword(
+      RegistrationValue.email,
+      RegistrationValue.password
+    );
   }
-  ForgetPassword( ForgetPasswordValue: Forms):Promise<void> {
-    return this.FS.sendPasswordResetEmail( ForgetPasswordValue.email) 
+  ForgetPassword(ForgetPasswordValue: Forms): Promise<void> {
+    return this.FS.sendPasswordResetEmail(ForgetPasswordValue.email);
   }
-  GetCode(code:any){
-    this.FS.checkActionCode(code).then(res => {this.code = res}).catch(err => console.log(err))
+  GetCode(code: any) {
+    this.FS.checkActionCode(code)
+      .then((res) => {
+        this.code = res;
+      })
+      .catch((err) => console.log(err));
   }
-  ResetPassword(ResetPasswordValue: Forms): Promise<void>  {
-    return this.FS.confirmPasswordReset(this.code , ResetPasswordValue.password)
+  ResetPassword(ResetPasswordValue: Forms): Promise<void> {
+    return this.FS.confirmPasswordReset(this.code, ResetPasswordValue.password);
   }
 
   // deleteAcc(): Promise<void>  {
-  //   return this.FS.currentUser 
+  //   return this.FS.currentUser
   // }
 
-  loginWithGoogle(){
+  loginWithGoogle() {
     // this.FS.signInWithPopup(new )
   }
-  loginWithFacebook(){
+  loginWithFacebook() {
     // this.FS.signInWithPopup(new )
   }
 
-  logOut(){
-    return this.FS.signOut()
+  logOut() {
+    return this.FS.signOut();
   }
-
 }

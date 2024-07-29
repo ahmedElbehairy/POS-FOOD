@@ -1,19 +1,19 @@
 <div class="modal-dialog">
-    <div class="modal-content IC-print-icon" *ngIf="isLoding">
+    <div class="modal-content IC-print-icon" *ngIf="order">
       <div class="modal-header">
           <p class="m-0 w-100 font-Bold-s22 text-center text-main">
             Order #{{order.idOfOrder}}
           </p>
       </div>
       <div class="modal-body">
-        <div class="d-flex flex-column gap-2 py-4" >
+        <div class="d-flex flex-column gap-2 py-4" *ngIf="customer">
             <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
                 <span>Recipent Name :</span>
-                <span></span>
+                <span>{{customer.name}}</span>
             </p>
             <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
                 <span>Customer ID</span>
-                <span></span>
+                <span>{{customer.id}}</span>
             </p>
             <p class="m-0 d-flex justify-content-between align-items-center font-SemiBold-s18 ">
                 <span>Recipent</span>

@@ -1,9 +1,17 @@
-<div class="d-flex justify-content-between w-100">
-  <section class="" style="width: 700px !important">
-    <app-card [card]="dataOfCard" (id)="addProudact($event)"></app-card>
+<div class="row h-100">
+  <section class="col-8 h-100 overflow-hidden">
+      <div class="d-flex justify-content-center align-items-center gap-3">
+        <div class="w-75 my-5 d-flex border-F-radius-s50 justify-content-betweengn-items-center border-gray-s2 py-3">
+            <i class="IC-Search mx-3 iC-S24 img-Background-Contain d-flex"></i>
+            <input class="border-0 w-100" type="text" (keyup)="serachInput($event)" placeholder="Search Here" name="Search" id="Search">
+            <i class="IC-QR mx-3 iC-S30-25 img-Background-Contain d-flex"></i>
+          </div>
+          <i class="IC-NotificationNav iC-S55 img-Background-Cover d-flex"></i>
+      </div>
+      <app-card [card]="Cards" (id)="addProudact($event)"></app-card>
     <!-- <mat-spinner></mat-spinner> -->
   </section>
-  <section style="width: 400px !important">
+  <section class="col-4">
     <app-right-side [order]="order"></app-right-side>
   </section>  
 </div>

@@ -1,0 +1,25 @@
+<div
+  *ngIf="!isLoading || data.length !== 0"
+  class="row m-0 justify-content-between w-100"
+>
+  <form
+    *ngFor="let input of data; let i = index"
+    #childForm="ngForm"
+    class="d-flex flex-column col-6 mb-5 gap-2"
+  >
+    <label [for]="input.id">{{ input.label }}</label>
+    <ng-select
+      *ngIf="input.options?.length !== 0"
+      [items]="input.options"
+      [placeholder]="input.ng_model == 0 ? input.placeHolder : ''"
+      notFoundText="No items found"
+      [bindLabel]="input.options[i].name ? 'name' : ''"
+      [multiple]="false"
+      [hideSelected]="true"
+      (change)="select($event, i)"
+      [id]="input.id"
+      class="border-F-radius-s8 w-75 px-3 py-2 border-gray-s2"
+    >
+    </ng-select>
+  </form>
+</div>

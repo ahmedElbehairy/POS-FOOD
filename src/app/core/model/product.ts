@@ -14,10 +14,25 @@ export interface ItemOrder {
     name:string
     price:number
     amount:number
+    img:string
 }
 export interface NewOrder {
     idOfOrder:string
     itemOrder:ItemOrder[] 
     totalPrice:number
     countOfitem:number
+}
+export interface N_D_Customer {
+    name:string
+    id:number
+}
+export interface newCustomer {
+    Name_Customer:string
+    Gender_Customer:number
+    City_Customer:number
+    Phone_Customer:number
+    Email_Customer:string
+    Id_Customer:number
+    Address:string
+    orderMaked:string
 }

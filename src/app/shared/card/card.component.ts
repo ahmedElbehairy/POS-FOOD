@@ -11,16 +11,8 @@ export class CardComponent {
   @Input() card!: Product[];
   @Output() id = new EventEmitter<string>
   stars: any[] = [1, 2, 3, 4, 5];
-  ngOnChanges(changes: any) {
-    if (
-      changes['card']?.firstChange == false &&
-      changes['card']?.currentValue
-    ) {
-    }
-  }
-  ngOnInit(){
-    // $('#add_Pro').modal('show');
-  }
+  ngOnChanges(changes: any) {}
+  ngOnInit(){}
   sendId(id: string) {
     this.id.emit(id)
     $('#add_Pro').modal('show');

@@ -1,38 +1,43 @@
-<div
-  *ngIf="card !== undefined"
-  class="d-flex justify-content-center flex-wrap gap-3 mx-3 px-3"
->
-  <div
-    *ngFor="let item of card; index as i"
-    class="my-4"
-    style="width: 195px !important"
-    [id]="item?.id"
-  >
-    <div class="hover-add-PR size-card position-relative">
-      <img
-        class="size-card img-Background-Cover border-F-radius-s8"
-        [src]="item?.img"
-        [alt]="item?.name"
-        loading="lazy"
-      />
-      <div
-        class="hover-add-pr d-none justify-content-center align-items-center"
-        (click)="sendId(item.id)"
-      >
-        <i class="icon-add iC-S50 img-Background-Cover d-flex"></i>
+<div *ngIf="card !== undefined" class="overflow-hidden px-3" style="height: calc(100% - 160px);">
+  <div class="overflow-scroll h-100 row">
+    <div
+      *ngFor="let item of card; index as i"
+      class="my-4 col-xxl-3 col-md-6 col-sm-12 col-xl-4"
+      [id]="item?.id"
+    >
+      <div class="hover-add-PR size-card position-relative">
+        <img
+          class="size-card img-Background-Cover border-F-radius-s8"
+          [src]="item?.img"
+          [alt]="item?.name"
+          loading="lazy"
+        />
+        <div
+          class="hover-add-pr d-none justify-content-center align-items-center"
+          (click)="sendId(item.id)"
+        >
+          <i class="icon-add iC-S50 img-Background-Cover d-flex"></i>
+        </div>
       </div>
-    </div>
-    <div class="d-flex flex-column mt-2 gap-2">
-      <ng-template #star let-fill="fill">
-        <span class="star" [class.full]="fill === 100">
-          <span class="half" [style.width.%]="fill">&starf;</span>&star;
-        </span>
-      </ng-template>
-      
-      <ngb-rating [(rate)]="item.rate" [starTemplate]="star" [readonly]="true" [max]="5"></ngb-rating>
-      
-      <p class="m-0 text-break font-SemiBold-s20">{{ item?.name | titlecase }}</p>
-      <p class="m-0 text-main font-Bold-s18">{{ item?.price | currency }}</p>
+      <div class="d-flex flex-column mt-2 gap-2">
+        <ng-template #star let-fill="fill">
+          <span class="star" [class.full]="fill === 100">
+            <span class="half" [style.width.%]="fill">&starf;</span>&star;
+          </span>
+        </ng-template>
+
+        <ngb-rating
+          [(rate)]="item.rate"
+          [starTemplate]="star"
+          [readonly]="true"
+          [max]="5"
+        ></ngb-rating>
+
+        <p class="m-0 text-break text-nowrap overflow-auto font-SemiBold-s20">
+          {{ item?.name | titlecase }}
+        </p>
+        <p class="m-0 text-main font-Bold-s18">{{ item?.price | currency }}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@
           class="border-0 py-3 px-4 border-F-radius-s8 m-0 d-flex align-items-center gap-3 mx-3"
           [ngClass]="!_Router.url.includes(item.routing) ? 'opacity-25 bg-transparent' : 'opacity-100'"
           [routerLink]="item.routing"
+          [disabled]="item.disabled"
         >
           <i class="d-flex iC-S30 img-Background-Contain {{ item.icon }}"></i>
           {{ item.name }}

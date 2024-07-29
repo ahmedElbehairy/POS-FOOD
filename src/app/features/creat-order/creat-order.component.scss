@@ -1,3 +1,8 @@
-.WInput {
-    width: 33% !important;
+::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+  }
+
+.divShadow {
+  box-shadow:10px 10px 10px 0px #E5E5E5
 }

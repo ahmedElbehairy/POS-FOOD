@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatOrderComponent } from './creat-order/creat-order.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     CreatOrderComponent,
+    DashboardComponent,
   ],
   imports: [
     SharedModule,

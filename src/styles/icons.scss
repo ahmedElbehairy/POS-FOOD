@@ -67,15 +67,34 @@
 .IC-print-icon {
   background-image: url(../assets/icon/print-icon.svg);
 }
+.IC-Search {
+  background-image: url(../assets/icon/Search.svg);
+}
+.IC-QR {
+  background-image: url(../assets/icon/Qr-Code.svg);
+}
+.IC-NotificationNav {
+  background-image: url(../assets/icon/NotificationNav.svg);
+}
 
 .iC-S20 {
   width: 20px;
   height: 20px;
 }
 
+.iC-S24 {
+  width: 24px;
+  height: 24px;
+}
+
 .iC-S30 {
   width: 30px;
   height: 30px;
+}
+
+.iC-S30-25 {
+  width: 30px;
+  height: 25px;
 }
 
 .iC-S45 {
@@ -86,4 +105,9 @@
 .iC-S50 {
   width: 50px;
   height: 50px;
+}
+
+.iC-S55 {
+  width: 55px;
+  height: 55px;
 }

@@ -4,7 +4,7 @@ import { NewUser } from 'src/app/core/model/Auth';
 import { NewOrder, Order, SendPro } from 'src/app/core/model/product';
 import { ProductsService } from 'src/app/core/service/products.service';
 import { UsersService } from 'src/app/core/service/users.service';
-declare var $: any;
+
 
 @Component({
   selector: 'app-right-side',
@@ -45,9 +45,8 @@ export class RightSideComponent {
       console.log(el);
       item.totalPrice += el.totalPrice
       item.countOfitem +=el.amount
-      item.itemOrder.push({name:el.name , price:el.price , amount:el.amount})
+      item.itemOrder.push({name:el.name , price:el.price , amount:el.amount , img:el.img})
     })
-    $('#make_order').modal('show')
     this.MakeOrder = item
     this._order.makeOrder(item.idOfOrder , item).then(res => {
       this._router.navigate([`/creat_order/${item.idOfOrder}`])

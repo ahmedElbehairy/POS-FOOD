@@ -11,7 +11,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AddProComponent } from './add-pro/add-pro.component';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrintOrderComponent } from './print-order/print-order.component';
-
+import { InputSelectComponent } from './input-select/input-select.component';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { PrintOrderComponent } from './print-order/print-order.component';
     CardComponent,
     AddProComponent,
     PrintOrderComponent,
+    InputSelectComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     NgbModule,
+    MatAutocompleteModule,
+    NgSelectModule,
     NgbRatingModule,
     RouterModule,
     NgxSpinnerModule,
@@ -39,6 +44,7 @@ import { PrintOrderComponent } from './print-order/print-order.component';
     RightSideComponent,
     CardComponent,
     AddProComponent,
+    InputSelectComponent,
     PrintOrderComponent,
   ],
 })
