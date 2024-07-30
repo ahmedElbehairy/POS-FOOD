@@ -1,0 +1,147 @@
+<div class="row py-5 justify-content-between px-4 vh-100 overflow-hidden">
+  <div class="col-5 px-4 h-100">
+    <p class="m-0 font-Bold-s26">Pending Order</p>
+    <div class="border-F-radius-s8 divShadow mt-4 border-gray-s2 overflow-hidden" style="height: 95%;">
+      <p class="m-0 border-b-gray-s1  font-Bold-s26 p-4">All Orders</p>
+      <div class="overflow-scroll" style="height: 89.5%;">
+        <div (click)="open(order.idOfOrder)"
+          class="m-4 p-4 border-F-radius-s8 d-flex flex-column gap-2 cursor-click"
+          *ngFor="let order of Orders"
+          [ngClass]="
+            order.idOfOrder == orderOpen?.idOfOrder
+              ? 'bg-main'
+              : 'bg-white'
+          "
+        >
+          <p class="m-0 d-flex justify-content-between align-items-center">
+            <span
+              class="font-Bold-s20 "
+              [ngClass]="
+                order.idOfOrder == orderOpen?.idOfOrder
+                  ? 'text-white'
+                  : 'text-black'
+              "
+            >
+              Order #{{ order.idOfOrder }}</span
+            >
+            <!-- order.paid == 'paid' ? 'text-green' : 'text-main' -->
+            <span
+              class="font-SemiBold-s18"
+              [ngClass]="
+                order.idOfOrder == orderOpen?.idOfOrder
+                  ? 'text-white'
+                  : 'text-main' 
+                  "
+            >
+              {{ "Paid" }}</span
+            >
+          </p>
+          <p class="m-0 d-flex justify-content-between align-items-center">
+            <span
+              class="font-Medium-s20 "
+              [ngClass]="
+                order.idOfOrder == orderOpen?.idOfOrder
+                  ? 'text-white'
+                  : 'text-Gray85'
+              "
+            >
+              Table:{{ "" }} Gust:{{ "" }}
+            </span>
+            <span
+              class="font-Bold-s22"
+              [ngClass]="
+                order.idOfOrder == orderOpen?.idOfOrder
+                  ? 'text-white'
+                  : 'text-black'
+              "
+            >
+              {{ order.totalPrice / 10 + order.totalPrice / 14 + order.totalPrice | currency }}</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 h-100 px-4" *ngIf="orderOpen">
+    <p class="m-0 mb-5 border-b-gray-s1 pb-4 d-flex justify-content-between align-items-center">
+      <span class="font-Bold-s24">Order #{{ orderOpen.idOfOrder }}</span>
+      <span class="font-SemiBold-s22" [ngClass]="orderOpen.paid == 'paid' ? 'text-green' : 'text-main'"> {{ "Paid" }}</span>
+    </p>
+    <div class="">
+      <p class="m-0 font-SemiBold-s22 mb-5">Details</p>
+      <div class="m-0 d-flex justify-content-between align-items-center">
+        <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
+          <span class="text-Gray85 font-SemiBold-s20">Table No</span>
+          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.table}}</span>
+        </p>
+        <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
+          <span class="text-Gray85 font-SemiBold-s20">Guest</span>
+          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.idOfCoustomer}}</span>
+        </p>
+        <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
+          <span class="text-Gray85 font-SemiBold-s20">Customer</span>
+          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.coustomerName}}</span>
+        </p>
+        <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
+          <span class="text-Gray85 font-SemiBold-s20">Payment</span>
+          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.Payment}}</span>
+        </p>
+      </div>
+    </div>
+    <div class="mt-5" style="height: 65%;">
+      <span class="font-SemiBold-s22">Order</span>
+      <div class="overflow-scroll" style="height: 76%;">
+        <div *ngFor="let item of orderOpen.itemOrder" class="d-flex mt-3 p-2 border-F-radius-s8 pe-4 gap-3 align-items-center justify-content-between border-gray-s2">
+          <div class="d-flex align-items-center gap-4">
+            <img
+              class="img-Background-Cover img-S80 border-F-radius-s8"
+              loading="lazy"
+              [src]="item.img"
+              [alt]="item.name"
+            />
+            <p class="m-0 font-SemiBold-s20 text-black">
+              <span> 
+                {{ item.name | titlecase}}
+              </span>
+              <span> 
+                X{{ item.amount}}
+              </span>
+            </p>
+          </div>
+          <p class="m-0 text-main font-Bold-s20">{{
+            item.price * item.amount | currency
+          }}</p>
+        </div>
+      </div>
+      <button
+      type="type" (click)="openReset()"
+      class="btn px-5 bg-support1 w-100 py-3 text-white mt-5 justify-content-center d-flex align-items-center gap-2">
+      Place Order
+    </button>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="line-spin-fade"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+<app-snack-bar [errorMessage]="errorMessage"></app-snack-bar>
+
+
+<!-- <app-print-order
+  [order]="orderOpen"
+  [customer]="{
+    name: orderOpen.dataOfCoustomer.Name_Customer,
+    id: orderOpen.dataOfCoustomer.Id_Customer
+  }"
+  class="modal fade"
+  id="make_order"
+  tabindex="-1"
+  aria-labelledby="addProLabel"
+  aria-hidden="true"
+></app-print-order> -->

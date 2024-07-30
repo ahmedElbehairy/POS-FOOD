@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/store';
 import { ProductsEffect } from './store/effects/product.effects';
 import { environment } from 'src/environments/environments.prod';
+import { OrdersEffect } from './store/effects/orders.effects';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { environment } from 'src/environments/environments.prod';
       maxAge: 10
     }),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ProductsEffect]),
+    EffectsModule.forRoot([ProductsEffect ,OrdersEffect]),
     AppRoutingModule
   ],
   providers: [],

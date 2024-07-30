@@ -9,7 +9,7 @@ $Gray85: #777777;
 $cyan-blue: #E5E5E5;
 $Gray6B: #5c5e6b;
 $red: #aa0000;
-$green: #009600;
+$green: #12991F;
 
 // START === Background Color
 .bg-Inherit {
@@ -98,6 +98,10 @@ $green: #009600;
 
 .text-red {
   color: $red !important;
+}
+
+.text-green {
+  color: $green !important;
 }
 
 // END === Text Color

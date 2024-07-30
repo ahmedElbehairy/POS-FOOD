@@ -10,12 +10,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatOrderComponent } from './creat-order/creat-order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     CreatOrderComponent,
+    OrdersComponent,
     DashboardComponent,
   ],
   imports: [

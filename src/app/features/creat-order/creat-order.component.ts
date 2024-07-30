@@ -7,6 +7,7 @@ import {
   N_D_Customer,
   newCustomer,
   NewOrder,
+  UpCoustomerToOrder,
 } from 'src/app/core/model/product';
 import { ProductsService } from 'src/app/core/service/products.service';
 import { UsersService } from 'src/app/core/service/users.service';
@@ -63,6 +64,31 @@ export class CreatOrderComponent {
       },
       {
         errorMessage: '',
+        id: 'Payment',
+        ng_model: 0,
+        placeHolder: 'Payment ...',
+        label: 'Payment :',
+        options: [
+          { name: 'Cash', id: 1 },
+          { name: 'Visa', id: 2 },
+        ],
+      },
+      {
+        errorMessage: '',
+        id: 'Table',
+        ng_model: 0,
+        placeHolder: 'Table ...',
+        label: 'number of table :',
+        options: [
+          { name: 'table 1', id: 1 },
+          { name: 'table 2', id: 2 },
+          { name: 'table 3', id: 3 },
+          { name: 'table 4', id: 4 },
+          { name: 'table 5', id: 5 },
+        ],
+      },
+      {
+        errorMessage: '',
         id: 'City_Customer',
         ng_model: 0,
         placeHolder: 'City ...',
@@ -111,6 +137,7 @@ export class CreatOrderComponent {
     this._Spinner.show();
     this._order.getOneOrders(id).subscribe(
       (res: any) => {
+        console.log(res);
         this.order = res;
         this._Spinner.hide();
       },
@@ -122,7 +149,6 @@ export class CreatOrderComponent {
 
   dataOfDropdown(event: Option) {
     this.CustomerForm[event.name] = event.id;
-    console.log(this.CustomerForm);
   }
   CustomerForm: any = {};
   ngSubmit(Customer: newCustomer) {
@@ -131,6 +157,14 @@ export class CreatOrderComponent {
       !document.getElementById('update')?.click ||
       document.getElementById('update') == null
     ) {
+      let orderUP:UpCoustomerToOrder = {table:1 ,Payment:'cash' ,coustomerName:Customer.Name_Customer , idOfCoustomer:Customer.Id_Customer}
+      this._order.upCoustomerOfOrder(this.order.idOfOrder , orderUP).then(
+        res => {console.log(res);
+        }
+      ).catch(
+        err => {console.log(err);
+        }
+      )
       this._customer
         .creatNewCoustomer(Customer.Id_Customer.toString(), Customer)
         .then((res) => {
@@ -196,8 +230,10 @@ export class CreatOrderComponent {
     this.indexChanged = i;
     if (id == 'add' && this.order.itemOrder[i].amount >= 0) {
       this.order.itemOrder[i].amount = this.order.itemOrder[i].amount + amount;
+      this.order.totalPrice = this.order.itemOrder[i].amount * this.order.itemOrder[i].price;
     } else if (id == 'minus' && this.order.itemOrder[i].amount > 1) {
       this.order.itemOrder[i].amount = this.order.itemOrder[i].amount - amount;
+      this.order.totalPrice = this.order.itemOrder[i].amount * this.order.itemOrder[i].price;      
     } else if (id == 'minus' && this.order.itemOrder[i].amount == 1) {
       this.order.itemOrder.splice(i, 1);
     }
@@ -210,7 +246,7 @@ export class CreatOrderComponent {
   }
   updateOrder() {
     this._order
-      .updateOrder(this.order.idOfOrder, this.order.itemOrder)
+      .updateOrder(this.order.idOfOrder, this.order.itemOrder ,this.order.totalPrice )
       .then((res) => {
         this.indexChanged = -1;
         this.errorMessage = '';

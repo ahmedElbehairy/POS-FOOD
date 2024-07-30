@@ -26,6 +26,12 @@ export interface N_D_Customer {
     name:string
     id:number
 }
+export interface UpCoustomerToOrder {
+    table:number
+    idOfCoustomer:number
+    Payment:string ,
+    coustomerName:string
+}
 export interface newCustomer {
     Name_Customer:string
     Gender_Customer:number

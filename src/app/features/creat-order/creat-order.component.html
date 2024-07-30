@@ -1,5 +1,5 @@
 <div class="p-5">
-  <p *ngIf="order" class="m-0 text-black mb-5 font-SemiBold-s30">
+  <p *ngIf="order" class="m-0 text-black mb-4 font-SemiBold-s30">
     Order #{{ order.idOfOrder }}
   </p>
   <form
@@ -14,26 +14,32 @@
       name="orderMaked"
     />
     <div
-      class="d-flex flex-column col-4 mb-5 gap-2"
-      *ngFor="let input of inputForm.InputText; index as i"
-    >
-      <label [for]="input.id">{{ input.label }}</label>
-      <input
-        type="text"
-        [id]="input.id"
-        [placeholder]="input.placeHolder"
-        [(ngModel)]="input.ng_model"
-        (keypress)="numberOnly($event, input.id, i)"
-        [name]="input.id"
-        class="border-F-radius-s8 w-75 px-3 py-2 border-gray-s2"
-      />
-      <p class="m-0 CC-alert">{{ input.errorMessage }}</p>
-    </div>
-    <div class="col-8 px-0">
-      <app-input-select
+      class="row justify-content-between">
+      <div class="d-flex col-4 px-0 mb-4 gap-2 flex-column" *ngFor="let input of inputForm.InputText; index as i">
+        <label [for]="input.id">{{ input.label }}</label>
+        <input
+          type="text"
+          [id]="input.id"
+          [placeholder]="input.placeHolder"
+          [(ngModel)]="input.ng_model"
+          (keypress)="numberOnly($event, input.id, i)"
+          [name]="input.id"
+          class="border-F-radius-s8 w-75 px-3 py-2 border-gray-s2"
+        />
+        <p class="m-0 CC-alert">{{ input.errorMessage }}</p>
+      </div>
+      <div class="col-8 px-0">
+        <app-input-select
         (dataOfDropdown)="dataOfDropdown($event)"
-        [data]="inputForm.InputSelect"
-      ></app-input-select>
+        [data]="inputForm.InputSelect.slice(0,2)"
+        ></app-input-select>
+      </div>
+      <div class="col-8 px-0">
+        <app-input-select
+        (dataOfDropdown)="dataOfDropdown($event)"
+        [data]="inputForm.InputSelect.slice(2,4)"
+        ></app-input-select>
+      </div>
     </div>
     <label for="Address">Address</label>
     <textarea
@@ -46,7 +52,7 @@
     ></textarea>
   </form>
   <div
-    class="row justify-content-between mt-5"
+    class="row justify-content-between mt-4"
     *ngIf="order"
     style="height: 345px"
   >

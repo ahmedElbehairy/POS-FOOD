@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { LOAD, SuccessAction, erorrAction } from '../Actions/product.action';
+import { LOAD, SuccessAction, erorrAction } from '../Actions/orders.action';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-@Injectable()
-export class ProductsEffect {
-  errorMessage!: string;
 
+@Injectable()
+
+export class OrdersEffect {
+  errorMessage!: string;
   todo$ = createEffect(() =>
     this._actions.pipe(
       ofType(LOAD),
       tap(() => this.spinner.show()),
       mergeMap(() =>
-        this.FS.collection('products')
+        this.FS.collection('orders')
           .valueChanges()
           .pipe(
             map((data) => new SuccessAction(data)),

@@ -20,7 +20,7 @@ const initialState: Product[] = [];
 
 
 const ProductReducer: ActionReducer<Product[], CustomAction> = (
-  state: Product[] = initialState, // Provide default value here
+  state: Product[] = initialState,
   action: CustomAction
 ): Product [] => {
   switch (action.type) {
@@ -34,6 +34,7 @@ const ProductReducer: ActionReducer<Product[], CustomAction> = (
       return state;
   }
 };
+
 
 let productsFs = createFeatureSelector<Product>('products');
 export let productsSelector = createSelector(productsFs, (state) => state);
