@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatOrderComponent } from './creat-order/creat-order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersComponent } from './orders/orders.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ProductsModule } from './products/products.module';
 
 
 @NgModule({
@@ -23,11 +25,13 @@ import { OrdersComponent } from './orders/orders.component';
   imports: [
     SharedModule,
     FormsModule,
+    MatIconModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     AuthModule,
+    ProductsModule,
     FeaturesRoutingModule,
     CommonModule,
 ]

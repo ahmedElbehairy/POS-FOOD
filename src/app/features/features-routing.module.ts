@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundPageComponent } from '../shared/not-found-page/not-found-page.component';
 import { AdmainGuard, AuthGuard } from '../core/hellper/guards/auth.guard';
@@ -21,7 +20,10 @@ const routes: Routes = [
     { path: 'Messages',component:HomeComponent, canActivate: [AuthGuard]},
     { path: 'Notification',component:HomeComponent, canActivate: [AuthGuard]},
     { path: 'Order',component:OrdersComponent, canActivate: [AuthGuard]},
-    { path: 'Product',component:HomeComponent, canActivate: [AuthGuard]},
+    { path: "Product",loadChildren: () =>
+      import("./products/products.module").then(
+      (m: any) => m.ProductsModule
+      ), canActivate: [AdmainGuard]},
     { path: 'Setting',component:HomeComponent, canActivate: [AuthGuard]},
     { path: '**', component:NotFoundPageComponent},
 ];

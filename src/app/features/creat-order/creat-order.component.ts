@@ -64,18 +64,18 @@ export class CreatOrderComponent {
       },
       {
         errorMessage: '',
-        id: 'Payment',
+        id: 'Paid',
         ng_model: 0,
-        placeHolder: 'Payment ...',
-        label: 'Payment :',
+        placeHolder: 'Paid ...',
+        label: 'Paid Now !',
         options: [
-          { name: 'Cash', id: 1 },
-          { name: 'Visa', id: 2 },
+          { name: 'Paid', id: 1 },
+          { name: 'Unpaid', id: 2 }
         ],
       },
       {
         errorMessage: '',
-        id: 'Table',
+        id: 'table',
         ng_model: 0,
         placeHolder: 'Table ...',
         label: 'number of table :',
@@ -85,6 +85,17 @@ export class CreatOrderComponent {
           { name: 'table 3', id: 3 },
           { name: 'table 4', id: 4 },
           { name: 'table 5', id: 5 },
+        ],
+      },
+      {
+        errorMessage: '',
+        id: 'Payment',
+        ng_model: 0,
+        placeHolder: 'Payment ...',
+        label: 'Payment :',
+        options: [
+          { name: 'Cash', id: 1 },
+          { name: 'Visa', id: 2 },
         ],
       },
       {
@@ -126,7 +137,13 @@ export class CreatOrderComponent {
         });
       },
       (err) => {
-        console.log(err);
+         this.errorMessage = ` <p class="m-0 d-flex flex-column">
+          <span class="text-main font-Bold-s20"> Welcome ! </span> 
+          <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2">
+            you have problem with your wifi !!
+          </span>
+          </p>
+        `
       }
     );
   }
@@ -137,12 +154,17 @@ export class CreatOrderComponent {
     this._Spinner.show();
     this._order.getOneOrders(id).subscribe(
       (res: any) => {
-        console.log(res);
         this.order = res;
         this._Spinner.hide();
       },
       (err) => {
-        console.log(err);
+         this.errorMessage = ` <p class="m-0 d-flex flex-column">
+          <span class="text-main font-Bold-s20"> Welcome ! </span> 
+          <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2">
+            you have problem with your wifi !!
+          </span>
+          </p>
+        `
       }
     );
   }
@@ -157,12 +179,35 @@ export class CreatOrderComponent {
       !document.getElementById('update')?.click ||
       document.getElementById('update') == null
     ) {
-      let orderUP:UpCoustomerToOrder = {table:1 ,Payment:'cash' ,coustomerName:Customer.Name_Customer , idOfCoustomer:Customer.Id_Customer}
+      let orderUP:UpCoustomerToOrder = {table:Customer.table ,Payment:Customer.Payment ,coustomerName:Customer.Name_Customer , idOfCoustomer:Customer.Id_Customer.toString() , Paid:Customer.Paid}
       this._order.upCoustomerOfOrder(this.order.idOfOrder , orderUP).then(
-        res => {console.log(res);
+        res => {
+         this.successMessage = ` <p class="m-0 d-flex flex-column">
+          <span class="text-main font-Bold-s20"> Welcome ! </span> 
+          <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+            MR: ${Customer.Name_Customer} ,
+            compleat your Order Success !!
+          </span>
+          </p>
+        `
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 2000);
         }
       ).catch(
-        err => {console.log(err);
+        err => 
+          {
+           this.errorMessage = `<p class="m-0 d-flex flex-column">
+          <span class="text-main font-Bold-s20"> Welcome ! </span> 
+          <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+            MR: ${Customer.Name_Customer} ,
+            Sorry we have a little problem
+          </span>
+          </p>
+        `
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
         }
       )
       this._customer

@@ -35,14 +35,12 @@ export class RightSideComponent {
       this.order.orders[i].totalPrice =  this.order.orders[i].amount*this.order.orders[i].price
     }else if (id == 'minus' && this.order.orders[i].amount == 1 ){
       this.order.orders.splice(i , 1)
-      console.log(this.order.orders); 
     }
   }
   
   makeOrder(){
     let item:NewOrder = {idOfOrder:this.order.id , totalPrice:this.totalPrice , countOfitem:0 , itemOrder:[]}
     this.order.orders.map(el => {
-      console.log(el);
       item.totalPrice += el.totalPrice 
       item.countOfitem +=el.amount
       item.itemOrder.push({name:el.name , price:el.price , amount:el.amount , img:el.img})

@@ -1,11 +1,11 @@
-<div *ngIf="card !== undefined" class="overflow-hidden px-3" style="height: calc(100% - 160px);">
+<div *ngIf="card !== undefined" class="overflow-hidden px-3" style="height: calc(100vh - 160px);">
   <div class="overflow-scroll h-100 row">
     <div
       *ngFor="let item of card; index as i"
       class="my-4 col-xxl-3 col-md-6 col-sm-12 col-xl-4"
       [id]="item?.id"
     >
-      <div class="hover-add-PR size-card position-relative">
+      <div class="hover-add-PR position-relative">
         <img
           class="size-card img-Background-Cover border-F-radius-s8"
           [src]="item?.img"

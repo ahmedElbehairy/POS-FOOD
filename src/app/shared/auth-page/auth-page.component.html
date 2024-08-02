@@ -33,14 +33,14 @@
           (ngSubmit)="SendData(submit.value)"
         >
                 <!-- label click for input change photo -->
-        <label *ngIf="_router.url.includes('SignUp')" for="change-photo" class="flex-column position-absolute 
+        <label *ngIf="_router.url.includes('SignUp')" for="user-photo" class="flex-column position-absolute 
         cursor-click border-f-main-dash-s2 img-S166 rounded-circle d-flex justify-content-center align-items-center img-Background-Cover"
         style='background-image: url({{downloadURL}})'>
         <i *ngIf="!downloadURL" class="IC-add-company-img d-flerx img-Background-Cover iC-S20"></i>
         <span *ngIf="!downloadURL">اضافة الصورة</span>
         </label>
         <!-- input change photo -->
-        <input (change)="sendPhoto($event)" type="file"  #img="ngModel" ngModel class="d-none" name="img" id="change-photo">
+        <input (change)="sendPhoto($event)" type="file"  #img="ngModel" ngModel class="d-none" name="img" id="user-photo">
           <div
             class="mt-5"
             *ngFor="let input of inputOfPage"

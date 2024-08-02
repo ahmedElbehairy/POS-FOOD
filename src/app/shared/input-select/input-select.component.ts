@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Option, sleect } from 'src/app/core/model/inputForm';
 
 @Component({
@@ -7,6 +8,7 @@ import { Option, sleect } from 'src/app/core/model/inputForm';
   styleUrl: './input-select.component.scss',
 })
 export class InputSelectComponent {
+  constructor(public _router:Router){}
   @Input() data: sleect[] = [];
   @Output() dataOfDropdown = new EventEmitter<any>();
   isLoading: boolean = false;
@@ -22,7 +24,7 @@ export class InputSelectComponent {
       this.data[index].ng_model = 0;
     } else {
       this.data[index].ng_model = option.id;
-      option = { name: this.data[index].id, id: option.id };
+      option = { name: this.data[index].id, id: option.id }; 
       this.dataOfDropdown.emit(option);
     }
   }

@@ -14,7 +14,7 @@ export interface Product {
   category: string;
   img: string;
   rate: number;
-  ingredients:string
+  quantity:number
 }
 const initialState: Product[] = [];
 

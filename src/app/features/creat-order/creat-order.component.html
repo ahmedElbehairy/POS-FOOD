@@ -37,7 +37,7 @@
       <div class="col-8 px-0">
         <app-input-select
         (dataOfDropdown)="dataOfDropdown($event)"
-        [data]="inputForm.InputSelect.slice(2,4)"
+        [data]="inputForm.InputSelect.slice(2,5)"
         ></app-input-select>
       </div>
     </div>
@@ -128,7 +128,7 @@
         <p
           class="m-0 font-SemiBold-s18 text-Gray85 justify-content-between d-flex align-items-center"
         >
-          <span class="">Discount 10%</span>
+          <span class="">Services 10%</span>
           <span class="">{{ (order.totalPrice / 100) * 10 | currency }}</span>
         </p>
         <p

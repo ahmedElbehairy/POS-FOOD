@@ -28,12 +28,10 @@
             <span
               class="font-SemiBold-s18"
               [ngClass]="
-                order.idOfOrder == orderOpen?.idOfOrder
-                  ? 'text-white'
-                  : 'text-main' 
-                  "
+                order.idOfOrder == orderOpen?.idOfOrder ? 'text-white' : '' ||
+                order.Paid == 1 ? 'text-green' : 'text-main' "
             >
-              {{ "Paid" }}</span
+              {{ order.Paid == 1 ? 'Paid' : 'UnPaid' }}</span
             >
           </p>
           <p class="m-0 d-flex justify-content-between align-items-center">
@@ -45,7 +43,7 @@
                   : 'text-Gray85'
               "
             >
-              Table:{{ "" }} Gust:{{ "" }}
+              Table:{{ order.table }} Gust:{{ order.idOfCoustomer }}
             </span>
             <span
               class="font-Bold-s22"
@@ -65,26 +63,26 @@
   <div class="col-7 h-100 px-4" *ngIf="orderOpen">
     <p class="m-0 mb-5 border-b-gray-s1 pb-4 d-flex justify-content-between align-items-center">
       <span class="font-Bold-s24">Order #{{ orderOpen.idOfOrder }}</span>
-      <span class="font-SemiBold-s22" [ngClass]="orderOpen.paid == 'paid' ? 'text-green' : 'text-main'"> {{ "Paid" }}</span>
+      <span class="font-SemiBold-s22" [ngClass]="orderOpen.Paid == 1 ? 'text-green' : 'text-main'"> {{ orderOpen.Paid == 1 ? 'Paid' : 'UnPaid' }}</span>
     </p>
     <div class="">
       <p class="m-0 font-SemiBold-s22 mb-5">Details</p>
       <div class="m-0 d-flex justify-content-between align-items-center">
         <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
           <span class="text-Gray85 font-SemiBold-s20">Table No</span>
-          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.table}}</span>
+          <span class="font-Bold-s20">{{orderOpen?.table}}</span>
         </p>
         <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
           <span class="text-Gray85 font-SemiBold-s20">Guest</span>
-          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.idOfCoustomer}}</span>
+          <span class="font-Bold-s20">{{orderOpen?.idOfCoustomer}}</span>
         </p>
         <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
           <span class="text-Gray85 font-SemiBold-s20">Customer</span>
-          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.coustomerName}}</span>
+          <span class="font-Bold-s20">{{orderOpen?.coustomerName}}</span>
         </p>
         <p class="d-flex flex-column align-items-center justify-content-center gap-2 ">
           <span class="text-Gray85 font-SemiBold-s20">Payment</span>
-          <span class="font-Bold-s20">{{orderOpen.dataOfCoustomer.Payment}}</span>
+          <span class="font-Bold-s20">{{orderOpen?.Payment == 1 ? 'Cash' : 'Visa'}}</span>
         </p>
       </div>
     </div>
@@ -104,7 +102,7 @@
                 {{ item.name | titlecase}}
               </span>
               <span> 
-                X{{ item.amount}}
+                X {{ item.amount}}
               </span>
             </p>
           </div>

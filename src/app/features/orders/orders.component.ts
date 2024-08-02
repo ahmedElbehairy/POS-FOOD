@@ -5,6 +5,7 @@ import { loadorderstAction } from 'src/app/store/Actions/orders.action';
 import { Orders, ordersSelector } from 'src/app/store/Reducers/orders.reducer';
 import { StoreInterface } from 'src/app/store/store';
 declare var $: any;
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -27,7 +28,6 @@ export class OrdersComponent {
     this._store.select(ordersSelector).subscribe(
       (res:any) => {
         this.Orders = res
-        console.log(res);
       },
       (erro) => {
         this.errorMessage = erro.message;

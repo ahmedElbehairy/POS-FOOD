@@ -15,6 +15,12 @@ export class ProductsService {
   getOneProducts(id: string) {
     return this.FS.collection('products').doc(id).valueChanges();
   }
+  deleteProducts(id:string) {
+    return this.FS.collection('products').doc(id).delete()
+  }
+  updateProducts() {
+    return this.FS.collection('products').valueChanges();
+  }
   makeOrder(id: string, orderData: NewOrder) {
     return this.FS.collection('orders').doc(id).set(orderData);
   }
@@ -24,9 +30,7 @@ export class ProductsService {
       .update({ itemOrder: itemOrder  , totalPrice:totalPrice});
   }
   upCoustomerOfOrder(id: string, dataOfCoustomer: UpCoustomerToOrder) {
-    return this.FS.collection('orders')
-      .doc(id)
-      .update({ dataOfCoustomer });
+    return this.FS.collection('orders').doc(id).update(dataOfCoustomer);
   }
   getAllOrders() {
     return this.FS.collection('orders').valueChanges();

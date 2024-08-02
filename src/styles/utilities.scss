@@ -6,6 +6,9 @@
 .border-F-radius-s8 {
   border-radius: 8px;
 }
+.border-F-radius-s20 {
+  border-radius: 20px;
+}
 .border-F-radius-s50 {
   border-radius: 50px;
 }
@@ -20,6 +23,10 @@
 
 .border-b-gray-s1 {
   border-bottom: 1px #e5e5e5 solid;
+}
+
+.border-b-gray-s2 {
+  border-bottom: 2px #e5e5e5 solid;
 }
 
 .border-B-T-gray-s1 {
@@ -44,5 +51,5 @@
 }
 
 .divShadow {
-  box-shadow:10px 10px 10px 0px #E5E5E5
+  box-shadow: 0px 10px 30px #E5E5E5
 }

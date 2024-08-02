@@ -52,7 +52,6 @@ export class ForgetPasswordComponent {
           `;
       })
       .catch(err => {
-        console.log(err);
               this.errorMessage = `<p class="m-0 d-flex flex-column">
             <span class="text-main font-Bold-s20"> Oops ! </span> 
             <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 

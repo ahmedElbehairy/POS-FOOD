@@ -28,12 +28,25 @@ export interface N_D_Customer {
 }
 export interface UpCoustomerToOrder {
     table:number
-    idOfCoustomer:number
-    Payment:string ,
+    idOfCoustomer:string
+    Paid:number
+    Payment:number ,
     coustomerName:string
+}
+export interface newProduct {
+    img: string;
+    Product_Name:string
+    Product_Price:number
+    Id_Product:string
+    Product_Quantity:number
+    Category:string
+    rate: number;
 }
 export interface newCustomer {
     Name_Customer:string
+    Paid:number
+    table:number
+    Payment:number
     Gender_Customer:number
     City_Customer:number
     Phone_Customer:number

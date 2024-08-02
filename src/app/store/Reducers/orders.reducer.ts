@@ -16,6 +16,7 @@ export interface Orders {
     countOfitem:number
     idOfCoustomer:string
     table:number 
+    Paid:number
     Payment:string
 }
 export interface ItemOrder {
@@ -29,6 +30,7 @@ export interface dataOfCoustomer {
   idOfCoustomer:number
   Payment:string ,
   coustomerName:string
+  Paid:number
 }
 const initialState: Orders[] = [];
 
