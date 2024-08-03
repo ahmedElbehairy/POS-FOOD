@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ItemOrder, NewOrder, UpCoustomerToOrder } from '../model/product';
+import { ItemOrder, NewOrder, newProduct, UpCoustomerToOrder, UpProduct } from '../model/product';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,11 @@ export class ProductsService {
   deleteProducts(id:string) {
     return this.FS.collection('products').doc(id).delete()
   }
-  updateProducts() {
-    return this.FS.collection('products').valueChanges();
+  updateProducts(id:string , dataUp:UpProduct) {
+    return this.FS.collection('products').doc(id).update(dataUp)
+  }
+  addProducts(id:string , ProductForm:newProduct) {
+    return this.FS.collection('products').doc(id).set(ProductForm)
   }
   makeOrder(id: string, orderData: NewOrder) {
     return this.FS.collection('orders').doc(id).set(orderData);

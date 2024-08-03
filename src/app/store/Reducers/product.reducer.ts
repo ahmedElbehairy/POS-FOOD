@@ -9,6 +9,7 @@ import {
 
 export interface Product {
   id: string;
+  ingredients:string
   name: string;
   price: number;
   category: string;

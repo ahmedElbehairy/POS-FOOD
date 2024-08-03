@@ -14,7 +14,7 @@ export class ProductHomeComponent {
   errorMessage!: string;
   successMessage!: string;
   Product: Product[] = [];
-  constructor(private _product:ProductsService, private _store: Store<StoreInterface>){}
+  constructor(private _product:ProductsService, private _store: Store<StoreInterface> ){}
   ngOnInit() {
     this.getAllProducts();
   }
@@ -23,7 +23,6 @@ export class ProductHomeComponent {
     this._store.dispatch(new loadProductAction());
     this._store.select(productsSelector).subscribe(
       (res:any) => {
-        console.log(res); 
         this.Product = res
       },
       (erro) => {
@@ -36,10 +35,30 @@ export class ProductHomeComponent {
   }
   deleteProduct(id:string){
     this._product.deleteProducts(id).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-      
+        this.successMessage = ` <p class="m-0 d-flex flex-column">
+        <span class="text-main font-Bold-s20"> Welcome ! </span> 
+        <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+          delete your Product Success !!
+        </span>
+        </p>
+      `
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 2000);
+      }
+    ).catch(
+      err => 
+        {
+         this.errorMessage = `<p class="m-0 d-flex flex-column">
+        <span class="text-main font-Bold-s20"> Welcome ! </span> 
+        <span class="text-white font-SemiBold-s20 d-flex align-items-center gap-2"> 
+          Sorry we have a little problem
+        </span>
+        </p>
+      `
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2000);
     })
   }
 }

@@ -21,7 +21,7 @@
                             <img [src]="item.img" class="img-S60 border-F-radius-s8 img-Background-Cover" [alt]="item.name"> <p class="m-0">{{item.name | titlecase}}</p> 
                          </th>
                         <th class="col-2">{{item.id}}</th>
-                        <th class="col-1">{{'0'}}</th>
+                        <th class="col-1">{{item.quantity}}</th>
                         <th class="col-2">{{item.price | currency}}</th>
                         <th class="col-3 d-flex justify-content-center gap-4 align-items-center">
                             <p class="m-0 cursor-click d-flex gap-2 align-items-center"
@@ -41,3 +41,17 @@
         </table>
     </div>
 </div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="line-spin-fade"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+
+<app-snack-bar
+  [errorMessage]="errorMessage"
+  [successMessage]="successMessage"
+></app-snack-bar>

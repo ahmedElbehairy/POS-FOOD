@@ -4,8 +4,8 @@
   <form
     *ngFor="let input of data; let i = index"
     #childForm="ngForm"
-    class="d-flex px-0 flex-column mb-4 gap-2"
-    [ngClass]="_router.url.includes('Product') ? 'col-12' : ''"
+    class="d-flex flex-column mb-4 gap-2"
+    [ngClass]="_router.url.includes('Product') ? 'col-12 ' : 'px-0 col-6'"
   >
     <label [for]="input.id">{{ input.label }}</label>
     <ng-select
@@ -16,10 +16,19 @@
       [bindLabel]="input.options[i].name ? 'name' : ''"
       [multiple]="false"
       [hideSelected]="true"
+      name="selectedItem"
+      [(ngModel)]="selectedItem"
       (change)="select($event, i)"
       [id]="input.id"
-      class="border-F-radius-s8 w-75 px-3 py-2 border-gray-s2"
+      class="border-F-radius-s8  px-3 py-2 border-gray-s2"
+      [ngClass]="_router.url.includes('Product') ? 'w-100' : 'w-75'"
+      (keyup.enter)="newCategory($event)"
     >
     </ng-select>
   </form>
 </div>
+
+<app-snack-bar
+  [errorMessage]="errorMessage"
+  [successMessage]="successMessage"
+></app-snack-bar>

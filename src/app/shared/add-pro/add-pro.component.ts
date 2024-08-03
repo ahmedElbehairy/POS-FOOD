@@ -14,7 +14,7 @@ export class AddProComponent {
   @Output() prod = new EventEmitter<SendPro>
   product!: Product;
   isLoding: boolean = false;
-  amount:number = 1
+  amount:number = 0
   TotlePrice:number = 0
   constructor(private _onePro: ProductsService) {}
 
@@ -33,9 +33,11 @@ export class AddProComponent {
     if(id == 'add' && this.amount >= 0 ){
       this.amount = this.amount + amount 
       this.TotlePrice =  this.amount*this.product.price
+      this.product.quantity = this.product.quantity - amount
     }else if (id == 'minus' && this.amount > 1 ){
       this.amount = this.amount - amount
       this.TotlePrice =  this.amount*this.product.price
+      this.product.quantity = this.product.quantity + amount
     }
   }
   ngOnChanges(changes: any) {
@@ -45,7 +47,7 @@ export class AddProComponent {
   }
   sendPro(item:Product){
     const pro:SendPro = {
-      name:item.name , totalPrice:this.TotlePrice ,img:item.img , amount:this.amount , price:item.price 
+      name:item.name , totalPrice:this.TotlePrice ,img:item.img , amount:this.amount , price:item.price , quantity:item.quantity , id:item.id
     }
     this.prod.emit(pro)
     $('#add_Pro').modal('hide');

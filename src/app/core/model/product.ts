@@ -6,8 +6,10 @@ export interface Order {
 export interface SendPro {
     name:string 
     totalPrice:number
+    quantity:number
     img:string 
     amount:number
+    id:string
     price:number
 }
 export interface ItemOrder {
@@ -35,12 +37,21 @@ export interface UpCoustomerToOrder {
 }
 export interface newProduct {
     img: string;
-    Product_Name:string
-    Product_Price:number
-    Id_Product:string
-    Product_Quantity:number
-    Category:string
+    name:string
+    price:number
+    id:string
+    quantity:number
+    category:string
     rate: number;
+}
+export interface UpProduct {
+    img?: string;
+    name?:string
+    price?:number
+    id?:string
+    quantity?:number
+    category?:string
+    rate?: number;
 }
 export interface newCustomer {
     Name_Customer:string
@@ -54,4 +65,9 @@ export interface newCustomer {
     Id_Customer:number
     Address:string
     orderMaked:string
+}
+
+export interface newCategory {
+    name:string
+    id:number
 }

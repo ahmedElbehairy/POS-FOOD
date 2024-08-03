@@ -6,18 +6,18 @@
         <form class="w-100 divShadow p-5 h-100" #product="ngForm"
         (ngSubmit)="ngSubmit(product.value)"> 
         <div class="d-flex w-100">
-            <p class="m-0 font-Bold-s22 text-main cursor-click">Back</p>
+            <p class="m-0 font-Bold-s22 text-main cursor-click" routerLink="/Product">Back</p>
             <div class="d-flex flex-column align-items-center justify-content-center w-100">
                 <label for="product-photo" class="border-gray-s2 border-F-radius-s20 divSize d-flex justify-content-center align-items-center cursor-click img-Background-Cover"
                 style='background-image: url({{downloadURL}})'>
                     <i *ngIf="!downloadURL" class="iC-S74-48 d-flex IC-upload img-Background-Cover"></i>
-                    <input (change)="sendPhoto($event)" type="file"  #img="ngModel" ngModel class="d-none" name="img" id="product-photo">
+                    <input (change)="sendPhoto($event)" type="file"  class="d-none" name="img" id="product-photo">
                 </label>
-                <p class="m-0 font-SemiBold-s28 text-black mt-4">Upload Image</p>
+                <p class="m-0 font-SemiBold-s28 text-black mt-3">Upload Image</p>
             </div>
         </div>
-            <div class="mt-5 row pt-4">
-                <div class="d-flex col-4 mb-5 px-0 gap-2 flex-column" *ngFor="let input of inputForm.InputText; index as i">
+            <div class="mt-4 row pt-3">
+                <div class="d-flex col-4 mb-4 px-0~ gap-2 flex-column" *ngFor="let input of inputForm.InputText; index as i">
                     <label [for]="input.id">{{ input.label }}</label>
                     <input
                       type="text"
@@ -26,16 +26,17 @@
                       [(ngModel)]="input.ng_model"
                       (keypress)="numberOnly($event, input.id, i)"
                       [name]="input.id"
-                      class="border-F-radius-s8 w-75 px-3 py-2 border-gray-s2"
+                      class="border-F-radius-s8 w-100 px-3 py-2 border-gray-s2"
                     />
                     <p class="m-0 CC-alert">{{ input.errorMessage }}</p>
                 </div>
-                <div class="col-4 px-0">
+                <div class="col-4 px-0~">
                     <app-input-select
                     (dataOfDropdown)="dataOfDropdown($event)"
                     [data]="inputForm.InputSelect.slice(0,2)"
                     ></app-input-select>
-                  </div>
+                </div>
+                <textarea class="border-F-radius-s8 w-100 px-3 py-2 border-gray-s2" placeholder="ingredients" name="ingredients" rows="5" ngModel #ingredients="ngModel" id="ingredients" ></textarea>
             </div>
             <div class="d-flex justify-content-center mt-5">
                 <button
@@ -50,12 +51,8 @@
 </div>
 
 
-<ngx-spinner
-  bdColor="rgba(0, 0, 0, 0.8)"
-  size="large"
-  color="#fff"
-  type="line-spin-fade"
-  [fullScreen]="true"
-  ><p style="color: white">Loading...</p></ngx-spinner
->
+<app-snack-bar
+  [errorMessage]="errorMessage"
+  [successMessage]="successMessage"
+></app-snack-bar>
 

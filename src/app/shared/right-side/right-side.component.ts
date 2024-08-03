@@ -20,6 +20,8 @@ export class RightSideComponent {
   ngOnInit(){
     this.getUser()
   }
+  ngOnChanges(){}
+
   getUser(){
     const id:any = localStorage.getItem('user')?.replace(/['"]+/g, '')
     this._user.getOneUser(id).subscribe((res:any) => {
@@ -30,12 +32,15 @@ export class RightSideComponent {
     if(id == 'add' && this.order.orders[i].amount >= 0 ){
       this.order.orders[i].amount = this.order.orders[i].amount + amount 
       this.order.orders[i].totalPrice =  this.order.orders[i].amount*this.order.orders[i].price
+      this.order.orders[i].quantity =  this.order.orders[i].quantity - amount
     }else if (id == 'minus' && this.order.orders[i].amount > 1 ){
       this.order.orders[i].amount = this.order.orders[i].amount - amount
       this.order.orders[i].totalPrice =  this.order.orders[i].amount*this.order.orders[i].price
+      this.order.orders[i].quantity =  this.order.orders[i].quantity + amount
     }else if (id == 'minus' && this.order.orders[i].amount == 1 ){
       this.order.orders.splice(i , 1)
     }
+    this._order.updateProducts(this.order.orders[i].id , {quantity:this.order.orders[i].quantity}).then()
   }
   
   makeOrder(){
@@ -44,6 +49,9 @@ export class RightSideComponent {
       item.totalPrice += el.totalPrice 
       item.countOfitem +=el.amount
       item.itemOrder.push({name:el.name , price:el.price , amount:el.amount , img:el.img})
+    })
+    this.order.orders.map(el => {
+      this._order.updateProducts(el.id , {quantity:el.quantity}).then()
     })
     this.MakeOrder = item
     this._order.makeOrder(item.idOfOrder , item).then(res => {
